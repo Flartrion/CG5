@@ -3,6 +3,7 @@ import java.awt.Dimension
 import java.awt.Graphics
 import java.awt.Graphics2D
 import javax.swing.JPanel
+import javax.swing.Timer
 import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.roundToInt
@@ -15,6 +16,11 @@ class BezierSurface : JPanel() {
 
     init {
         preferredSize = Dimension(640, 640)
+        Timer(30) {
+            rotateOnX(-0.5)
+//            rotateOnY(1.0)
+            repaint()
+        }.start()
     }
 
     fun calculatePoints() {
