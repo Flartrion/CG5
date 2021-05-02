@@ -43,11 +43,11 @@ class MainWindow : JFrame() {
                 PointChangeDialogue(this) {
                     pointData[pointList.selectedIndex] = it
                 }
-            bezierSurface.contourPoints.clear()
+//            bezierSurface.points.clear()
             for (i in 0 until pointData.size()) {
-                bezierSurface.contourPoints.add(pointData[i])
+                bezierSurface.points.add(pointData[i])
             }
-            bezierSurface.calculatePoints()
+//            bezierSurface.calculatePoints()
             repaint()
         }
 
@@ -92,9 +92,9 @@ class MainWindow : JFrame() {
         inputPanel.add(inputZone, BorderLayout.SOUTH)
 
         for (i in 0 until pointData.size()) {
-            bezierSurface.contourPoints.add(pointData[i])
+            bezierSurface.points.add(pointData[i])
         }
-        bezierSurface.calculatePoints()
+//        bezierSurface.calculatePoints()
 
         this.add(inputPanel, BorderLayout.NORTH)
         this.defaultCloseOperation = EXIT_ON_CLOSE
