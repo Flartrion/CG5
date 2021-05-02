@@ -1,6 +1,10 @@
 import java.awt.*
 import javax.swing.JPanel
-import kotlin.math.*
+import javax.swing.Timer
+import kotlin.math.PI
+import kotlin.math.atan2
+import kotlin.math.roundToInt
+import kotlin.math.sqrt
 
 class BezierSurface : JPanel() {
     val points = ArrayList<Vertex>()
@@ -10,27 +14,12 @@ class BezierSurface : JPanel() {
 
     init {
         preferredSize = Dimension(640, 640)
-        points.add(Vertex(0.0, 0.0, -100.0));
-        val change = sqrt(5.0) / 2
-        for (i in 0..4) {
-            points.add(
-                Vertex(
-                    sin(change) * cos(2 * i * PI / 5) * -100,
-                    sin(change) * sin(2 * i * Math.PI / 5) * -100,
-                    cos(change) * -100
-                )
-            )
-        }
-        for (i in 0..4) {
-            points.add(
-                Vertex(
-                    sin(change) * cos(2 * i * Math.PI / 5) * 100,
-                    sin(change) * sin(2 * i * Math.PI / 5) * 100,
-                    cos(change) * 100
-                )
-            )
-        }
-        points.add(Vertex(0.0, 0.0, 100.0))
+        Timer(30) {
+            rotateOnX(-0.5)
+//            rotateOnY(1.0)
+            repaint()
+        }.start()
+    }
 
         for (i in 0..4) {
             polys.add(Triple(0, (i + 1), ((i + 1) % 5 + 1)))
